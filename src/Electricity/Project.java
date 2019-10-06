@@ -43,6 +43,9 @@ public class Project extends JFrame implements ActionListener{
         m2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
         m2.setBackground(Color.WHITE);
 
+        m1.addActionListener(this);
+        m2.addActionListener(this);
+
         // --------------------------------------------------------------------------------------------
 
 
