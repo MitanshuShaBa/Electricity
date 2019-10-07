@@ -193,11 +193,15 @@ public class Project extends JFrame implements ActionListener{
         }else if(msg.equals("New Customer")){
             new new_customer().setVisible(true);
 
+        }else if(msg.equals("Generate Bill")){
+            new generate_bill().setVisible(true);
+
         }else if(msg.equals("Last Bill")){
             new LastBill().setVisible(true);
 
         }else if(msg.equals("Calculate Bill")){
             new calculate_bill().setVisible(true);
+
         }else if(msg.equals("Notepad")){
             try{
                 Runtime.getRuntime().exec("notepad.exe");
@@ -212,9 +216,6 @@ public class Project extends JFrame implements ActionListener{
             }catch(Exception e){ }
         }else if(msg.equals("Exit")){
             System.exit(0);
-        }else if(msg.equals("Generate Bill")){
-            new generate_bill().setVisible(true);
-
         }
 
 

@@ -15,8 +15,8 @@ public class Login extends JFrame implements ActionListener{
         super("Login Page");
 
         l1 = new JLabel("Username");
-        l2 = new JLabel("Password");
         tf1 = new JTextField(15);
+        l2 = new JLabel("Password");
         pf2 = new JPasswordField(15);
 
         ImageIcon ic1 = new ImageIcon(ClassLoader.getSystemResource("icon/login.png"));
