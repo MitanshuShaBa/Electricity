@@ -94,10 +94,12 @@ public class new_customer extends JFrame implements ActionListener{
                 return;
             }
             String q1 = "insert into emp values('"+a+"','"+c+"','"+d+"','"+e+"','"+f+"','"+g+"','"+h+"')";
+            String q2 = "insert into login values('"+a+"','"+c+"')";
 
             try{
                 conn c1 = new conn();
                 c1.s.executeUpdate(q1);
+                c1.s.executeUpdate(q2);
                 JOptionPane.showMessageDialog(null,"Employee Created");
                 this.setVisible(false);
 

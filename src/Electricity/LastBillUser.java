@@ -1,17 +1,30 @@
 package Electricity;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.sql.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class LastBill extends JFrame implements ActionListener{
+public class LastBillUser extends JFrame implements ActionListener{
     JLabel l1;
     JTextArea t1;
     JButton b1;
     Choice c1;
     JPanel p1;
-    LastBill(){
+    String meter;
+    LastBillUser(String user){
+        conn con = new conn();
+        try {
+            ResultSet rs = con.s.executeQuery("select * from emp where name='"+user+"'");
+            if (rs.next())
+                meter = rs.getString("meter_number");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         setSize(510,750);
         setLayout(new BorderLayout());
 
@@ -21,16 +34,7 @@ public class LastBill extends JFrame implements ActionListener{
 
         c1 = new Choice();
 
-        c1.add("1001");
-        c1.add("1002");
-        c1.add("1003");
-        c1.add("1004");
-        c1.add("1005");
-        c1.add("1006");
-        c1.add("1007");
-        c1.add("1008");
-        c1.add("1009");
-        c1.add("1010");
+        c1.add(meter);
 
 
         t1 = new JTextArea(50,15);
@@ -82,6 +86,6 @@ public class LastBill extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args){
-        new LastBill().setVisible(true);
+        new LastBillUser("Virat").setVisible(true);
     }
 }

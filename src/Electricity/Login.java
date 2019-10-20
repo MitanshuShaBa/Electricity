@@ -16,6 +16,7 @@ public class Login extends JFrame implements ActionListener{
 
         l1 = new JLabel("Username");
         tf1 = new JTextField(15);
+
         l2 = new JLabel("Password");
         pf2 = new JPasswordField(15);
 
@@ -44,6 +45,8 @@ public class Login extends JFrame implements ActionListener{
         p3 = new JPanel();
         p4 = new JPanel();
 
+        p2.setLayout(new GridLayout(2,2,10,50));
+        p2.setSize(10,10);
 
         add(l3,BorderLayout.WEST);
         p2.add(l1);
@@ -76,12 +79,16 @@ public class Login extends JFrame implements ActionListener{
             String q  = "select * from login where username = '"+a+"' and password = '"+b+"'";
             ResultSet rs = c1.s.executeQuery(q);
             if(rs.next()){
-                new Project().setVisible(true);
+                if (a.equals("admin"))
+                    new Project().setVisible(true);
+                else
+                    new Project_user(a).setVisible(true);
                 this.setVisible(false);
 
             }else{
                 JOptionPane.showMessageDialog(null, "Invalid login");
                 setVisible(false);
+                System.exit(0);
             }
         }catch(Exception e){
             e.printStackTrace();

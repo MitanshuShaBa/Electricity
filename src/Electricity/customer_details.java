@@ -9,7 +9,7 @@ public class customer_details extends JFrame implements ActionListener{
 
     JTable t1;
     JButton b1;
-    String x[] = {"Emp Name","Meter No","Address","State","City","Email","Phone"};
+    String x[] = {"Customer Name","Meter No","Address","State","City","Email","Phone"};
     String y[][] = new String[20][8];
     int i=0, j=0;
     customer_details(){

@@ -1,12 +1,16 @@
 package Electricity;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
-public class Project extends JFrame implements ActionListener{
-    Project(){
+public class Project_user extends JFrame implements ActionListener{
+    String my_user;
+    Project_user(String username){
         super("Electricity Billing System");
+        my_user = username;
 
         setSize(1920,1080);
 
@@ -17,53 +21,53 @@ public class Project extends JFrame implements ActionListener{
         JLabel l1 = new JLabel(icc3);
         add(l1);
 
-        /* First Column */
+//        /* First Column */
         JMenuBar mb  = new JMenuBar();
-        JMenu master = new JMenu("Master");
-        JMenuItem m1 = new JMenuItem("New Customer");
-        JMenuItem m2 = new JMenuItem("Customer Details");
-        master.setForeground(Color.BLUE);
+//        JMenu master = new JMenu("Master");
+//        JMenuItem m1 = new JMenuItem("New Customer");
+//        JMenuItem m2 = new JMenuItem("Customer Details");
+//        master.setForeground(Color.BLUE);
 
 
-        /* ---- Customer Details ---- */
-        m1.setFont(new Font("monospaced",Font.PLAIN,12));
-        ImageIcon icon1 = new ImageIcon(ClassLoader.getSystemResource("icon/icon1.png"));
-        Image image1 = icon1.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
-        m1.setIcon(new ImageIcon(image1));
-        m1.setMnemonic('D');
-        m1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
-        m1.setBackground(Color.WHITE);
-
-        /* ---- Meter Details ---- */
-        m2.setFont(new Font("monospaced",Font.PLAIN,12));
-        ImageIcon icon2 = new ImageIcon(ClassLoader.getSystemResource("icon/icon2.png"));
-        Image image2 = icon2.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
-        m2.setIcon(new ImageIcon(image2));
-        m2.setMnemonic('M');
-        m2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
-        m2.setBackground(Color.WHITE);
-
-        m1.addActionListener(this);
-        m2.addActionListener(this);
+//        /* ---- Customer Details ---- */
+//        m1.setFont(new Font("monospaced",Font.PLAIN,12));
+//        ImageIcon icon1 = new ImageIcon(ClassLoader.getSystemResource("icon/icon1.png"));
+//        Image image1 = icon1.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
+//        m1.setIcon(new ImageIcon(image1));
+//        m1.setMnemonic('D');
+//        m1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+//        m1.setBackground(Color.WHITE);
+//
+//        /* ---- Meter Details ---- */
+//        m2.setFont(new Font("monospaced",Font.PLAIN,12));
+//        ImageIcon icon2 = new ImageIcon(ClassLoader.getSystemResource("icon/icon2.png"));
+//        Image image2 = icon2.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
+//        m2.setIcon(new ImageIcon(image2));
+//        m2.setMnemonic('M');
+//        m2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
+//        m2.setBackground(Color.WHITE);
+//
+//        m1.addActionListener(this);
+//        m2.addActionListener(this);
 
         // --------------------------------------------------------------------------------------------
 
 
         /* Second Column */
         JMenu user = new JMenu("User");
-        JMenuItem u1 = new JMenuItem("Calculate Bill");
+//        JMenuItem u1 = new JMenuItem("Calculate Bill");
         JMenuItem u2 = new JMenuItem("Last Bill");
         user.setForeground(Color.RED);
 
 
-        /* ---- Bill Details ---- */
-        u1.setFont(new Font("monospaced",Font.PLAIN,12));
-        ImageIcon icon5 = new ImageIcon(ClassLoader.getSystemResource("icon/icon5.png"));
-        Image image5 = icon5.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
-        u1.setIcon(new ImageIcon(image5));
-        u1.setMnemonic('B');
-        u1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
-        u1.setBackground(Color.WHITE);
+//        /* ---- Bill Details ---- */
+//        u1.setFont(new Font("monospaced",Font.PLAIN,12));
+//        ImageIcon icon5 = new ImageIcon(ClassLoader.getSystemResource("icon/icon5.png"));
+//        Image image5 = icon5.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
+//        u1.setIcon(new ImageIcon(image5));
+//        u1.setMnemonic('B');
+//        u1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+//        u1.setBackground(Color.WHITE);
 
         /* ---- Last Bill ----*/
         u2.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -74,7 +78,7 @@ public class Project extends JFrame implements ActionListener{
         u2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
         u2.setBackground(Color.WHITE);
 
-        u1.addActionListener(this);
+//        u1.addActionListener(this);
         u2.addActionListener(this);
 
 
@@ -159,10 +163,10 @@ public class Project extends JFrame implements ActionListener{
         // ---------------------------------------------------------------------------------------------
 
 
-        master.add(m1);
-        master.add(m2);
+//        master.add(m1);
+//        master.add(m2);
 
-        user.add(u1);
+//        user.add(u1);
         user.add(u2);
 
         report.add(r1);
@@ -173,7 +177,7 @@ public class Project extends JFrame implements ActionListener{
 
         exit.add(ex);
 
-        mb.add(master);
+//        mb.add(master);
         mb.add(user);
         mb.add(report);
         mb.add(utility);
@@ -187,35 +191,35 @@ public class Project extends JFrame implements ActionListener{
     }
     public void actionPerformed(ActionEvent ae){
         String msg = ae.getActionCommand();
-        if(msg.equals("Customer Details")){
-            new customer_details().setVisible(true);
+        switch (msg) {
+            case "Generate Bill":
+                new generate_bill_user(my_user).setVisible(true);
 
-        }else if(msg.equals("New Customer")){
-            new new_customer().setVisible(true);
+                break;
+            case "Last Bill":
+                new LastBillUser(my_user).setVisible(true);
 
-        }else if(msg.equals("Generate Bill")){
-            new generate_bill().setVisible(true);
-
-        }else if(msg.equals("Last Bill")){
-            new LastBill().setVisible(true);
-
-        }else if(msg.equals("Calculate Bill")){
-            new calculate_bill().setVisible(true);
-
-        }else if(msg.equals("Notepad")){
-            try{
-                Runtime.getRuntime().exec("notepad.exe");
-            }catch(Exception e){ }
-        }else if(msg.equals("Calculator")){
-            try{
-                Runtime.getRuntime().exec("calc.exe");
-            }catch(Exception e){ }
-        }else if(msg.equals("Web Browser")){
-            try{
-                Runtime.getRuntime().exec("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
-            }catch(Exception e){ }
-        }else if(msg.equals("Exit")){
-            System.exit(0);
+                break;
+            case "Notepad":
+                try {
+                    Runtime.getRuntime().exec("notepad.exe");
+                } catch (Exception ignored) {
+                }
+                break;
+            case "Calculator":
+                try {
+                    Runtime.getRuntime().exec("calc.exe");
+                } catch (Exception ignored) {
+                }
+                break;
+            case "Web Browser":
+                try {
+                    Runtime.getRuntime().exec("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
+                } catch (Exception ignored) {
+                }
+                break;
+            case "Exit":
+                System.exit(0);
         }
 
 
@@ -223,7 +227,7 @@ public class Project extends JFrame implements ActionListener{
 
 
     public static void main(String[] args){
-        new Project().setVisible(true);
+        new Project_user("Virat").setVisible(true);
     }
 
 }
